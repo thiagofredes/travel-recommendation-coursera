@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Recommendation</title>
+    <style>
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .navbar-links {
+            display: flex;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+            margin-right: 0;
+        }
+
+        .search-bar button {
+            padding: 8px 15px;
+            background-color: #555;
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            background-color: #777;
+        }
+
+        .reset-button {
+            padding: 8px 15px;
+            background-color: #777;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .reset-button:hover {
+            background-color: #999;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-image: url("imgs/hero2.png");
+            width: 100vw;
+            height: 100vh;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            position: relative;
+            left: 50px;
+            top: 25%;
+            display: block;
+            width: 60%;
+        }
+
+        .search-results {
+            position: absolute;
+            right: 2%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 400px;
+            margin: 10px 0;
+        }
+
+        .search-result-item {
+            border-radius: 10px;
+            background-color: white
+        }
+
+        .search-result-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .search-result-item .description {
+            margin: 5px 5px;
+        }
+
+        .search-result-item .description .item-title {
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .search-result-item .description .item-description {
+            text-align: left;
+        }
+
+        .search-result-item button {
+            background: #333;
+            color: white;
+            border-radius: 4px;
+            height: 35px;
+            width: 60px;
+            margin: 0 0 10px 5px;
+        }
+    </style>
+
+    <script src="travel_recommendation.js"></script>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="navbar-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search recommendations...">
+            <button onclick="performSearch()">Search</button>
+            <button onclick="resetSearch()">Reset</button>
+        </div>
+    </div>
+
+    <div id="search-results-root" class="search-results"></div>
+
+    <div class="hero">
+        <div class="hero-text">
+            <h1>TRAVEL RECOMMENDATIONS</h1>
+            <p>This website will recommend you travel destinations. Enjoy!</p>
+        </div>
+    </div>
+
+    <script>
+        const searchResultsRoot = document.getElementById("search-results-root");
+        async function performSearch() {
+            const searchTerm = document.getElementById("searchInput").value;
+            let searchResult = await search(searchTerm);
+            if(searchResult != undefined)
+                displayResult(searchResult);
+        }
+
+        function displayResult(results) {
+            console.log(results);
+            results.forEach(res => {
+                const newSearchResultItem = document.createElement("div");
+                const newSearchResultImage = document.createElement("img");
+                const newSearchResultDescription = document.createElement("div");
+                const descriptionTitle = document.createElement("p");
+                const descriptionBody = document.createElement("p");
+
+                descriptionTitle.textContent = res["name"];
+                descriptionBody.textContent = res["description"];
+                descriptionTitle.classList.add("item-title");
+                descriptionBody.classList.add("item-description");
+                newSearchResultDescription.append(descriptionTitle, descriptionBody);
+                newSearchResultDescription.classList.add("description");
+
+                newSearchResultImage.src = res["imageUrl"];
+                newSearchResultImage.classList.add("result-item-img");
+
+                newSearchResultItem.append(newSearchResultImage, newSearchResultDescription);
+                newSearchResultItem.classList.add("search-result-item");
+
+                searchResultsRoot.append(newSearchResultItem);
+            });
+        }
+
+        function resetSearch() {
+            document.getElementById("searchInput").value = "";
+            while (searchResultsRoot.lastChild) {
+                searchResultsRoot.removeChild(searchResultsRoot.lastChild);
+            }
+        }
+    </script>
+
+</body>
+
+</html>

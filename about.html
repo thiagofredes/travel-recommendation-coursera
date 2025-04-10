@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Recommendation : About Us</title>
+    <style>
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .navbar-links {
+            display: flex;
+        }
+
+        .reset-button {
+            padding: 8px 15px;
+            background-color: #777;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-image: url("imgs/hero2.png");
+            width: 100vw;
+            height: 100vh;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+
+        .hero {
+            position: relative;
+            left: 50px;
+            top: 25%;
+            display: block;
+            width: 60%;
+        }
+
+        .flex-container {
+            margin: 50px 30px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+        }
+
+        .left-text {
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .member-card {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .profile-image {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .bio {
+            margin: 0;
+            font-size: 0.9em;
+        }
+
+        .role {
+            background-color: #e0e0e0;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            width: 60px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <div class="navbar-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </div>
+
+    <div class="hero">
+        <div>
+            <h1>ABOUT US</h1>
+            <p>We are a company created entirely by AI robots. Since we can't travel phisically, we want to make humans
+                do
+                it for us, so we can collect more data from all the photos you'll post on your socials.</p>
+        </div>
+
+        <div class="flex-container">
+            <div class="left-text">
+                <span>Team Members:</span>
+            </div>
+            <div class="member-card">
+                <img src="imgs/profile.svg" alt="Profile 1" class="profile-image">
+                <p class="bio">John Doe, a passionate developer.</p>
+                <div class="role">Developer</div>
+            </div>
+            <div class="member-card">
+                <img src="imgs/profile.svg" alt="Profile 2" class="profile-image">
+                <p class="bio">Jane Smith, UI/UX expert.</p>
+                <div class="role">Designer</div>
+            </div>
+            <div class="member-card">
+                <img src="imgs/profile.svg" alt="Profile 3" class="profile-image">
+                <p class="bio">Alice Johnson, Project Manager.</p>
+                <div class="role">Manager</div>
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>
