@@ -18,6 +18,16 @@ async function search(searchTerm) {
         case "country":
         case "countries":
             response = await fetchRecommendation("countries");
+
+            let newResponse = [];
+            response.forEach((res) => {
+                newResponse.push(...res["cities"])
+            })
+
+            console.log(newResponse);
+
+            response = newResponse;
+
             break;
     }
 
