@@ -171,12 +171,17 @@
             const searchTerm = document.getElementById("searchInput").value;
             let searchResult = await search(searchTerm);
             if(searchResult != undefined)
-                displayResult(searchResult);
+                await displayResult(searchResult);
         }
 
         function displayResult(results) {
             console.log(results);
+            if (searchResultsRoot.childElementCount > 0)
+                clearSearchResults();
+
             results.forEach(res => {
+                console.log(res);
+
                 const newSearchResultItem = document.createElement("div");
                 const newSearchResultImage = document.createElement("img");
                 const newSearchResultDescription = document.createElement("div");
@@ -202,6 +207,10 @@
 
         function resetSearch() {
             document.getElementById("searchInput").value = "";
+            clearSearchResults();
+        }
+
+        function clearSearchResults(){
             while (searchResultsRoot.lastChild) {
                 searchResultsRoot.removeChild(searchResultsRoot.lastChild);
             }
