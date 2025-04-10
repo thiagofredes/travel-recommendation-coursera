@@ -102,17 +102,6 @@
             height: 50px;
             border-radius: 5px;
             border-style: none;
-        }
-
-        .cta {
-            position:relative;
-            left: 50px;
-            top: 45%;
-            display: block;
-            width: 100px;
-            height: 50px;
-            border-radius: 5px;
-            border-style: none;
             background: #333;
             color: white;
         }
@@ -161,9 +150,14 @@
             background: #333;
             color: white;
             border-radius: 4px;
+            border-style: none;
             height: 35px;
             width: 60px;
             margin: 0 0 10px 5px;
+        }
+
+        .search-result-item button:hover {
+            background: #5d5d5d;
         }
     </style>
 
@@ -218,6 +212,9 @@
                 const newSearchResultDescription = document.createElement("div");
                 const descriptionTitle = document.createElement("p");
                 const descriptionBody = document.createElement("p");
+                const visitButton = document.createElement("button");
+
+                visitButton.textContent = "Visit";
 
                 descriptionTitle.textContent = res["name"];
                 descriptionBody.textContent = res["description"];
@@ -231,6 +228,8 @@
 
                 newSearchResultItem.append(newSearchResultImage, newSearchResultDescription);
                 newSearchResultItem.classList.add("search-result-item");
+
+                newSearchResultItem.append(visitButton);
 
                 searchResultsRoot.append(newSearchResultItem);
             });
