@@ -1,4 +1,4 @@
-const recommendationsAPI = "/travel_recommendation_api.json";
+const recommendationsAPI = "travel_recommendation_api.json";
 
 async function search(searchTerm) {
     let searchTermLoweCase = searchTerm.toLowerCase();
