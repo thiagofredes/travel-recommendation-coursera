@@ -93,6 +93,35 @@
             width: 60%;
         }
 
+        .cta {
+            position:relative;
+            left: 50px;
+            top: 25%;
+            display: block;
+            width: 100px;
+            height: 50px;
+            border-radius: 5px;
+            border-style: none;
+        }
+
+        .cta {
+            position:relative;
+            left: 50px;
+            top: 45%;
+            display: block;
+            width: 100px;
+            height: 50px;
+            border-radius: 5px;
+            border-style: none;
+            background: #333;
+            color: white;
+        }
+
+        .cta:hover {
+            background: #5d5d5d;
+            color: white;
+        }
+
         .search-results {
             position: absolute;
             right: 2%;
@@ -164,6 +193,8 @@
             <p>This website will recommend you travel destinations. Enjoy!</p>
         </div>
     </div>
+
+    <button class="cta">BOOK NOW</button>
 
     <script>
         const searchResultsRoot = document.getElementById("search-results-root");
